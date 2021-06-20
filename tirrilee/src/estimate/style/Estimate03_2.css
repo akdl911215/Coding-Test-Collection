@@ -1,0 +1,49 @@
+.twoStageTypeCheckBox03_2 {
+    width: 167px;
+    height: 184px;
+    margin: 59px 17px 31px 53px;
+    padding: 12px 12px 30px 28px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.mainText03_2 {
+    width: 94px;
+    height: 27px;
+    margin: 16px 6px 8px 9px;
+    font-family: NotoSansCJKKR;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.89;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+
+.subText03_2 {
+    width: 108px;
+    height: 20px;
+    margin: 8px 1px 26px 0;
+    font-family: NotoSansCJKKR;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.86;
+    letter-spacing: -0.42px;
+    text-align: center;
+    color: #9e9e9e;
+}
+
+.priceText03_2 {
+    width: 167px;
+    height: 184px;
+    margin: 59px 17px 31px 53px;
+    padding: 12px 12px 30px 28px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}

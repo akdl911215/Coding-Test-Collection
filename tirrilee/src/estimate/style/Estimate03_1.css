@@ -7,3 +7,40 @@
     box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
 }
+
+.smallBtn03_1 {
+    width: 107px;
+    height: 27px;
+    margin: 0 88px 1px 0;
+    font-family: NotoSansCJKKR;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.89;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.smallPriceBtn03_1 {
+    width: 65px;
+    height: 27px;
+    margin: 1px 24px 0 88px;
+    font-family: NotoSansCJKKR;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.39;
+    letter-spacing: normal;
+    text-align: right;
+    color: #226bef;
+}
+
+.smallCheckingBox03_1 {
+    width: 18px;
+    height: 18px;
+    margin: 5px 0 5px 24px;
+    object-fit: contain;
+}

@@ -1,12 +1,30 @@
 import React from 'react';
+import 'estimate/style/Estimate03_1.css';
+import checkBox from '../image/Checkbox.png';
 
 const Estimate03_1 = () => {
+    const gpsBtn = (e) => {};
+
+    const mapBtn = (e) => {};
+
+    const kakaoPushBtn = (e) => {};
+
+    const communityBtn = (e) => {};
+
+    const sharingBtn = (e) => {};
+
+    const chattingRealTimeBtn = (e) => {};
+
+    const userTypeExtensionBtn = (e) => {};
+
+    const notNeedBtn = (e) => {};
+
     const preDefaultBtn = (e) => {
-        window.location.href = '/estimate01_2';
+        window.location.href = '/estimate02_1';
     };
 
     const nextDefaultBtn = (e) => {
-        window.location.href = '/estimate03_1';
+        window.location.href = '/estimate03_2';
     };
 
     return (
@@ -22,49 +40,97 @@ const Estimate03_1 = () => {
             <h3>(중복 선택 가능합니다!)</h3>
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => gpsBtn(e)}>
-                    <h2>GPS(내 주변)</h2>
+                    <div>
+                        <span className="smallBtn03_1">GPS(내 주변)</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => mapBtn(e)}>
-                    <h2>지도(맵 커스텀)</h2>
+                    <div>
+                        <span className="smallBtn03_1">지도(맵 커스텀)</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => kakaoPushBtn(e)}>
-                    <h2>카카오톡 푸쉬</h2>
+                    <div>
+                        <span className="smallBtn03_1">카카오톡 푸쉬</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => communityBtn(e)}>
-                    <h2>커뮤니티</h2>
+                    <div>
+                        <span className="smallBtn03_1">커뮤니티</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => sharingBtn(e)}>
-                    <h2>공유하기</h2>
+                    <div>
+                        <span className="smallBtn03_1">공유하기</span>
+                        <span className="smallPriceBtn03_1">100만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => userTypeExtensionBtn(e)}>
-                    <h2>유저타입확장</h2>
+                    <div>
+                        <span className="smallBtn03_1">유저타입확장</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => chattingRealTimeBtn(e)}>
-                    <h2>채팅(실시간)</h2>
+                    <div>
+                        <span className="smallBtn03_1">채팅(실시간)</span>
+                        <span className="smallPriceBtn03_1">200만원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallCheckBox03_1" onClick={(e) => notNeedBtn(e)}>
-                    <h2>필요없습니다</h2>
+                    <div>
+                        <span className="smallBtn03_1">필요없습니다</span>
+                        <span className="smallPriceBtn03_1">0원</span>
+                        <span className="smallCheckingBox03_1">
+                            <img src={checkBox} />
+                        </span>
+                    </div>
                 </button>
             </div>
 
