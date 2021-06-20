@@ -27,13 +27,13 @@ const Estimate02_1 = () => {
             <h3>선택에 많은 도움이 될꺼에요!</h3>
             <div>
                 <button type="button" className="smallDefaultBtn02_1" onClick={(e) => defaultPrice(e)}>
-                    <h1>~20P 기본금액x1</h1>
+                    <h2>~20P 기본금액x1</h2>
                 </button>
             </div>
 
             <div>
                 <button type="button" className="smallDefaultBtn02_1" onClick={(e) => defaultPriceTwice(e)}>
-                    <h1>21P~30P</h1>
+                    <h2>21P~30P</h2>
                 </button>
             </div>
 

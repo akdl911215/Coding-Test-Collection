@@ -1,4 +1,5 @@
 // component
+export { default as StartHome } from 'estimate/component/StartHome';
 export { default as Home } from 'estimate/component/Home';
 export { default as Estimate00_1 } from 'estimate/component/Estimate00_1';
 export { default as Estimate01_1 } from 'estimate/component/Estimate01_1';
