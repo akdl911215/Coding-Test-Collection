@@ -1,0 +1,9 @@
+.defaultBtn01_2 {
+    width: 350px;
+    height: 158px;
+    margin: 30px 40px 40px 17px;
+    padding: 24px 80px 32px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}

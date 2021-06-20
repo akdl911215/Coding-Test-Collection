@@ -3,7 +3,9 @@ import 'estimate/style/Home.css';
 import startImage from 'estimate/image/startImage.png';
 
 const Home = () => {
-    const startBtn = () => {};
+    const startBtn = (e) => {
+        window.location.href = '/estimate00_1';
+    };
 
     return (
         <>
@@ -13,7 +15,7 @@ const Home = () => {
                 <img src={startImage} />
             </div>
 
-            <button type="button" className="startBtn" onClick={(e) => startBtn}>
+            <button type="button" className="startBtn" onClick={(e) => startBtn(e)}>
                 <span className="startFontStyle">시작하기</span>
             </button>
         </>
