@@ -1,0 +1,23 @@
+.nextDefaultBtn {
+    width: 167px;
+    height: 48px;
+    margin: 31px 31px 29px 18px;
+    padding: 14px 56px 14px 57px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 2px 2px 15px 0 rgba(34, 107, 239, 0.5);
+    background-color: #ffffff;
+}
+
+.preDefaultBtn {
+    width: 167px;
+    height: 48px;
+    margin: 31px 18px 29px 29px;
+    padding: 14px 58px 14px 55px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    border: solid 1px #e0e0e0;
+    background-color: #ffffff;
+  
+}

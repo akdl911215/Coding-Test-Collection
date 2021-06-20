@@ -1,0 +1,23 @@
+.startBtn {
+    width: 350px;
+    height: 60px;
+    margin: 48px 39px 22px 37px;
+    padding: 17.3px 138px 13.7px;
+    border-radius: 4px;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.startFontStyle {
+    width: 74px;
+    height: 29px;
+    font-family: NotoSansCJKKR;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.35;
+    letter-spacing: normal;
+    text-align: center;
+    color: #226bef;
+  }
