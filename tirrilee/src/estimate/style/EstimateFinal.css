@@ -1,0 +1,10 @@
+.redoing {
+    width: 350px;
+    height: 48px;
+    margin: 124px 29px 32px 47px;
+    padding: 14px 149px;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 2px 2px 15px 0 rgba(34, 107, 239, 0.5);
+    background-color: #ffffff;
+}

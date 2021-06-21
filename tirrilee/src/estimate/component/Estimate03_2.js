@@ -12,11 +12,11 @@ const Estimate03_2 = () => {
     const notNeedBtn = (e) => {};
 
     const preDefaultBtn = (e) => {
-        window.location.href = '/estimate02_1';
+        window.location.href = '/estimate03_1';
     };
 
     const nextDefaultBtn = (e) => {
-        window.location.href = '/estimate03_2';
+        window.location.href = '/estimate_final';
     };
 
     return (

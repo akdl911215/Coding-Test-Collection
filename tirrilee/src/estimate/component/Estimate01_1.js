@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'estimate/style/Common.css';
 import 'estimate/style/Estimate01_1.css';
+import { useDispatch } from 'react-redux';
+import { defaultChoice } from 'estimate/reducer/estimate.reducer';
 
 const Estimate01_1 = () => {
+    const dispatch = useDispatch();
     const planExits = (e) => {};
 
     const nonPlanExits = (e) => {};
@@ -14,6 +17,10 @@ const Estimate01_1 = () => {
     const nextDefaultBtn = (e) => {
         window.location.href = '/estimate01_2';
     };
+
+    useEffect(() => {
+        dispatch(defaultChoice());
+    });
 
     return (
         <>
