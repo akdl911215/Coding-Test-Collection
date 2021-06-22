@@ -5,10 +5,12 @@ const estimateSlice = createSlice({
     initialState: {
         totalPrice: '0',
         defaultChice: '',
+        name: [],
+        value: [],
     },
     reducer: {
         defaultChoice: (state, action) => {
-            state.defaultChice = action.payload.defaultChice;
+            state = action.payload.initialState;
         },
     },
     extraReducers: {},
