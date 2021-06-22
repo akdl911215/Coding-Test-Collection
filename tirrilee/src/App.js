@@ -7,6 +7,8 @@ import CountTest2 from '_TestCode/countTest/CountTest2';
 import SubmitCehck from '_TestCode/buttonTest/SubmitCheck';
 import ChangeCheck from '_TestCode/buttonTest/ChangeCheck';
 import Counter2 from '_TestCode/counterReducerTest/Counter2';
+import HandleSearch from '_TestCode/buttonTest/HandleSearch';
+import DocumentTest from '_TestCode/buttonTest/DocumentTest';
 
 const App = () => {
     return (
@@ -27,6 +29,8 @@ const App = () => {
             <Route exact path="/submitCehck" component={SubmitCehck} />
             <Route exact path="/changeCheck" component={ChangeCheck} />
             <Route exact path="/counter2" component={Counter2} />
+            <Route exact path="/handleSearch" component={HandleSearch} />
+            <Route exact path="/documentTest" component={DocumentTest} />
         </>
     );
 };

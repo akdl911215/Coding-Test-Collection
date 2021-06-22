@@ -65,10 +65,17 @@ const Estimate00_1 = () => {
         }
     };
 
+    // 버튼에 클릭이벤트 리스너 추가
+    // 이벤트 내용으로 
+    // 1. 쿼리셀렉터로 입력하고 원하는 태그 가져옴
+    // 2. 태그에 따라서 innerHtml 혹은 value값으로 원하는 값을 준다
+
     return (
         <>
-            <h1>0단계, 어떤 서비스를 만들고 싶으신가요</h1>
-            <h3>지금 설정한 금액 : {totalPrice}</h3>
+            <div>
+                <h1>0단계, 어떤 서비스를 만들고 싶으신가요</h1>
+                <h3>현재까지 설정한 금액 : {totalPrice}</h3>
+            </div>
 
             <div>
                 <button type="button" className="defaultBtn00_1" name="appDevelopment" value="App개발" onChange={handleChange} onClick={(e) => appBooleanCheckBtn(e)}>
@@ -91,7 +98,7 @@ const Estimate00_1 = () => {
                     이전 단계
                 </button>
             </Link>
-            <Link to="estimate01_1">
+            <Link to="/estimate01_1">
                 <button type="button" className="nextDefaultBtn" onClick={(e) => nextDefaultBtn(e)}>
                     다음 단계
                 </button>
