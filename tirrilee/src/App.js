@@ -2,10 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { Home, Estimate00_1, Estimate01_1, Estimate03_1, Estimate02_1, Estimate01_2, Estimate03_2, EstimateFinal, StartHome } from 'estimate/index';
-import CountTest from 'countTest/CountTest';
-import CountTest2 from 'countTest/CountTest2';
-import SubmitCehck from 'countTest/buttonTest/SubmitCheck';
-import ChangeCheck from 'countTest/buttonTest/ChangeCheck';
+import CountTest from '_TestCode/countTest/CountTest';
+import CountTest2 from '_TestCode/countTest/CountTest2';
+import SubmitCehck from '_TestCode/buttonTest/SubmitCheck';
+import ChangeCheck from '_TestCode/buttonTest/ChangeCheck';
+import Counter2 from '_TestCode/counterReducerTest/Counter2';
 
 const App = () => {
     return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route exact path="/countTest2" component={CountTest2} />
             <Route exact path="/submitCehck" component={SubmitCehck} />
             <Route exact path="/changeCheck" component={ChangeCheck} />
+            <Route exact path="/counter2" component={Counter2} />
         </>
     );
 };

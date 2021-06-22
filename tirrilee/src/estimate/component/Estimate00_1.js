@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import 'estimate/style/Common.css';
 import 'estimate/style/Estimate00_1.css';
-import { useDispatch } from 'react-redux';
-import { defaultChoice } from 'estimate/reducer/estimate.reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { defaultChoice, totalPriceResult } from 'estimate/reducer/estimate.reducer';
+import { Link } from 'react-router-dom';
 
 const Estimate00_1 = () => {
     const [input, setInput] = useState({
@@ -10,6 +11,7 @@ const Estimate00_1 = () => {
         value: [],
     });
     const [totalPrice, setTotalPrice] = useState(0);
+    console.log('합산 금액 : ', totalPrice);
     const [appDoubleClickPrevent, setAppDoubleClicPrevent] = useState(false);
     const [wepDoubleClickPrevent, setWepDoubleClicPrevent] = useState(false);
     const dispatch = useDispatch();
@@ -27,18 +29,8 @@ const Estimate00_1 = () => {
         [input]
     );
 
-    const defaultBtn = () => {
-        const param = { name: input.name, value: input.value, totalPrice: totalPrice };
-        dispatch(param);
-    };
-
     const nextDefaultBtn = (e) => {
-        defaultBtn();
-        window.location.href = '/estimate01_1';
-    };
-
-    const preDefaultBtn = (e) => {
-        window.location.href = '/home';
+        dispatch(totalPriceResult(totalPrice));
     };
 
     const appBooleanCheckBtn = () => {
@@ -76,10 +68,8 @@ const Estimate00_1 = () => {
     return (
         <>
             <h1>0단계, 어떤 서비스를 만들고 싶으신가요</h1>
-
-            <h3>선택한 타입 이름 : {input.name}</h3>
-            <h3>선택한 타입 값 : {input.value}</h3>
             <h3>지금 설정한 금액 : {totalPrice}</h3>
+
             <div>
                 <button type="button" className="defaultBtn00_1" name="appDevelopment" value="App개발" onChange={handleChange} onClick={(e) => appBooleanCheckBtn(e)}>
                     <h1>App 개발</h1>
@@ -89,19 +79,23 @@ const Estimate00_1 = () => {
             </div>
 
             <div>
-                <button type="button" className="defaultBtn00_1" name="wepDevelopment" value="Wep개발" onChange={handleChange} onClick={() => wepBooleanCheckBtn()}>
+                <button type="button" className="defaultBtn00_1" name="wepDevelopment" value="Wep개발" onChange={handleChange} onClick={(e) => wepBooleanCheckBtn(e)}>
                     <h1>Wep 개발</h1>
                     <h3>반응형 웹</h3>
                     <h1>400만원</h1>
                 </button>
             </div>
 
-            <button type="button" className="preDefaultBtn" onClick={(e) => preDefaultBtn(e)}>
-                이전 단계
-            </button>
-            <button type="button" className="nextDefaultBtn" onClick={(e) => nextDefaultBtn(e)}>
-                다음 단계
-            </button>
+            <Link to="/">
+                <button type="button" className="preDefaultBtn">
+                    이전 단계
+                </button>
+            </Link>
+            <Link to="estimate01_1">
+                <button type="button" className="nextDefaultBtn" onClick={(e) => nextDefaultBtn(e)}>
+                    다음 단계
+                </button>
+            </Link>
         </>
     );
 };
