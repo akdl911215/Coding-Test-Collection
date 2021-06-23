@@ -18,7 +18,7 @@
 
 실수한점 :
 1.	reducer 컴포넌트 부분에서 reducers를 reducer로 dispatch를 보낼 때 Object 에러가 발생했었습니다.
-2.	reducer 안의 initialState의 totalPrice의 값을 '0'으로 보내서
+2.	reducer 안의 initialState의 totalPrice의 값을 '0'으로 보내서 String값이 되어서 String의 합이 됬습니다. ex) 300 + 50 = 30050
 
 특이사항 :
 1.	코딩테스트를 시작하면서 부족한 부분이나 모르는 부분을 확인을 하기 위해서 테스트폴더안의 파일들로 직접 실행해보면서 제작했습니다.
