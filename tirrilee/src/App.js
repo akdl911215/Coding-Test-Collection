@@ -9,6 +9,9 @@ import ChangeCheck from '_TestCode/buttonTest/ChangeCheck';
 import Counter2 from '_TestCode/counterReducerTest/Counter2';
 import HandleSearch from '_TestCode/buttonTest/HandleSearch';
 import DocumentTest from '_TestCode/buttonTest/DocumentTest';
+import RadioBtn from '_TestCode/buttonTest/RadioBtn';
+import RadioBtn2 from '_TestCode/buttonTest/RadioBtn2';
+import RadioBtn3 from '_TestCode/buttonTest/RadioBtn3';
 
 const App = () => {
     return (
@@ -23,14 +26,6 @@ const App = () => {
             <Route exact path="/estimate03_1" component={Estimate03_1} />
             <Route exact path="/estimate03_2" component={Estimate03_2} />
             <Route exact path="/estimate_final" component={EstimateFinal} />
-
-            <Route exact path="/countTest" component={CountTest} />
-            <Route exact path="/countTest2" component={CountTest2} />
-            <Route exact path="/submitCehck" component={SubmitCehck} />
-            <Route exact path="/changeCheck" component={ChangeCheck} />
-            <Route exact path="/counter2" component={Counter2} />
-            <Route exact path="/handleSearch" component={HandleSearch} />
-            <Route exact path="/documentTest" component={DocumentTest} />
         </>
     );
 };

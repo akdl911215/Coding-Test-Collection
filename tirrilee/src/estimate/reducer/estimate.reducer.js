@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const estimateSlice = createSlice({
     name: 'estimates',
     initialState: {
-        totalPrice: '0',
+        totalPrice: 0,
         defaultChice: '',
         name: [],
         value: [],
@@ -15,7 +15,6 @@ const estimateSlice = createSlice({
             console.log('action.payload :: ', action.payload);
             console.log('state.totalPrice :: ', state.totalPrice);
             state.totalPrice += action.payload;
-            window.localStorage.setItem('stateTotalPrice', JSON.stringify(state.totalPrice));
         },
     },
     extraReducers: {},

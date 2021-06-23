@@ -11,7 +11,6 @@ const Estimate00_1 = () => {
         value: [],
     });
     const [totalPrice, setTotalPrice] = useState(0);
-    console.log('합산 금액 : ', totalPrice);
     const [appDoubleClickPrevent, setAppDoubleClicPrevent] = useState(false);
     const [wepDoubleClickPrevent, setWepDoubleClicPrevent] = useState(false);
     const dispatch = useDispatch();
@@ -34,7 +33,6 @@ const Estimate00_1 = () => {
     };
 
     const appBooleanCheckBtn = () => {
-        console.log('appDoubleClickPrevent ::: ', appDoubleClickPrevent);
         setAppDoubleClicPrevent((check: boolean) => !check);
         appDoubleClickCheck();
     };
@@ -50,7 +48,6 @@ const Estimate00_1 = () => {
     };
 
     const wepBooleanCheckBtn = () => {
-        console.log('wepDoubleClickPrevent ::: ', wepDoubleClickPrevent);
         setWepDoubleClicPrevent((check: boolean) => !check);
         wepDoubleClickCheck();
     };
@@ -64,11 +61,6 @@ const Estimate00_1 = () => {
             return false;
         }
     };
-
-    // 버튼에 클릭이벤트 리스너 추가
-    // 이벤트 내용으로 
-    // 1. 쿼리셀렉터로 입력하고 원하는 태그 가져옴
-    // 2. 태그에 따라서 innerHtml 혹은 value값으로 원하는 값을 준다
 
     return (
         <>

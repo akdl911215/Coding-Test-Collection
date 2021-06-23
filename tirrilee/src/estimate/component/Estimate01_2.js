@@ -1,19 +1,19 @@
 import React from 'react';
 import 'estimate/style/Common.css';
 import 'estimate/style/Estimate01_2.css';
+import { totalPriceResult } from 'estimate/reducer/estimate.reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Estimate01_2 = () => {
+    const totalPriceValue = useSelector((state) => state.estimates.totalPrice);
+    console.log('totalPriceValue : ', totalPriceValue);
+
     const design = (e) => {};
 
     const nonDesign = (e) => {};
 
-    const preDefaultBtn = (e) => {
-        window.location.href = '/estimate01_1';
-    };
-
-    const nextDefaultBtn = (e) => {
-        window.location.href = '/estimate02_1';
-    };
+    const nextDefaultBtn = (e) => {};
 
     return (
         <>
@@ -40,12 +40,17 @@ const Estimate01_2 = () => {
                 </button>
             </div>
 
-            <button type="button" className="preDefaultBtn" onClick={(e) => preDefaultBtn(e)}>
-                이전 단계
-            </button>
-            <button type="button" className="nextDefaultBtn" onClick={(e) => nextDefaultBtn(e)}>
-                다음 단계
-            </button>
+            <Link to="/estimate01_1">
+                <button type="button" className="preDefaultBtn">
+                    이전 단계
+                </button>
+            </Link>
+
+            <Link to="/estimate02_1">
+                <button type="button" className="nextDefaultBtn" onClick={(e) => nextDefaultBtn(e)}>
+                    다음 단계
+                </button>
+            </Link>
         </>
     );
 };

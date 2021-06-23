@@ -2,7 +2,6 @@ import React from 'react';
 import 'estimate/style/Home.css';
 import startImage from 'estimate/image/startImage.png';
 
-
 const Home = () => {
     const startBtn = (e) => {
         window.location.href = '/estimate00_1';
@@ -11,7 +10,6 @@ const Home = () => {
     return (
         <>
             <h1>Tirrilee Estimate Program(Beta-Service)</h1>
-            
 
             <div className="imgcontainer">
                 <img src={startImage} />
