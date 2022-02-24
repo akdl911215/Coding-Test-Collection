@@ -1,40 +1,26 @@
 import React, { useState } from "react";
 import { Button, Input, Checkbox } from "semantic-ui-react";
 
-const Board = () => {
-  // const [word, setWord] = useState({ keyword: "" });
-  // const { keyword } = word;
-
-  const [inputText, setInputText] = useState({
-    content: "",
-    keyword: "",
-  });
-  const { content, keyword } = inputText;
-
-  const handleInput = (e) => {
-    console.log("e.target.name : ", e.target.name);
-    console.log("e.target.value : ", e.target.value);
-    setInputText({ ...inputText, [e.target.name]: e.target.value });
+const Board2 = () => {
+  const [word, setWord] = useState({ keyword: "" });
+  const { keyword } = word;
+  const wordHandleChange = (e) => {
+    setWord({ keyword: e.target.value });
   };
-
-  // const wordHandleChange = (e) => {
-  //   setInputText({ [e.target.name]: e.target.value });
-  // };
 
   const deleteArr = (index) => {
     contentArr.splice(index, 1);
     setContentArr((contentArr) => [...contentArr]);
   };
 
-  // const [content, setContent] = useState("");
+  const [content, setContent] = useState("");
   const [contentArr, setContentArr] = useState([]);
-  // const handleChange = (e) => {
-  //   setInputText({ [e.target.name]: e.target.value });
-  // };
-  const addValue = (e) => {
-    console.log("addValue : ", e.target.name);
+  const handleChange = (e) => {
+    setContent(e.target.value);
+  };
+  const addValue = () => {
     setContentArr((contentArr) => [...contentArr, content]);
-    setInputText({ ...inputText, [e.target.name]: "" });
+    setContent("");
   };
 
   const [completion, setCompletion] = useState(false);
@@ -47,14 +33,13 @@ const Board = () => {
     setSchedule(!schedule);
   };
 
-  console.log("contentArr : ", contentArr);
   return (
     <>
       <Input
         type="text"
         name="keyword"
         value={keyword}
-        onChange={handleInput}
+        onChange={wordHandleChange}
         placeholder="검색 키워드를 입력하세요."
       />
       <hr />
@@ -124,14 +109,14 @@ const Board = () => {
       <hr />
       <Input
         type="text"
-        name="content"
+        name="task"
         value={content}
         placeholder="테스크명을 입력하세요."
-        onChange={handleInput}
+        onChange={handleChange}
       />
       <Button onClick={addValue}>추가</Button>
     </>
   );
 };
 
-export default Board;
+export default Board2;
