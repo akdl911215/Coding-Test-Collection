@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { Button, Input, Checkbox } from "semantic-ui-react";
 
 const Board = () => {
-  // const [word, setWord] = useState({ keyword: "" });
-  // const { keyword } = word;
-
   const [inputText, setInputText] = useState({
     content: "",
     keyword: "",
@@ -12,27 +9,24 @@ const Board = () => {
   const { content, keyword } = inputText;
 
   const handleInput = (e) => {
-    console.log("e.target.name : ", e.target.name);
-    console.log("e.target.value : ", e.target.value);
     setInputText({ ...inputText, [e.target.name]: e.target.value });
   };
 
-  // const wordHandleChange = (e) => {
-  //   setInputText({ [e.target.name]: e.target.value });
-  // };
-
   const deleteArr = (index) => {
+    console.log("deleteArr index : ", index);
     contentArr.splice(index, 1);
     setContentArr((contentArr) => [...contentArr]);
   };
 
-  // const [content, setContent] = useState("");
   const [contentArr, setContentArr] = useState([]);
-  // const handleChange = (e) => {
-  //   setInputText({ [e.target.name]: e.target.value });
-  // };
+  const [contentArr2, setContentArr2] = useState([
+    {
+      id: 0,
+      content: "",
+      boolValue: false,
+    },
+  ]);
   const addValue = (e) => {
-    console.log("addValue : ", e.target.name);
     setContentArr((contentArr) => [...contentArr, content]);
     setInputText({ ...inputText, [e.target.name]: "" });
   };
@@ -43,7 +37,9 @@ const Board = () => {
   };
 
   const [schedule, setSchedule] = useState(false);
-  const scheduleCheck = () => {
+  const scheduleCheck = ({ target }) => {
+    console.log("target : ", target);
+    console.log("!schedule : ", !schedule);
     setSchedule(!schedule);
   };
 
@@ -81,7 +77,10 @@ const Board = () => {
                   return (
                     <>
                       <ul>
-                        <Checkbox onChange={scheduleCheck} />
+                        <Checkbox
+                          checked={schedule}
+                          onChange={(e) => scheduleCheck(e)}
+                        />
                         {element},{index}
                         <Button onClick={() => deleteArr(index)}>삭제</Button>
                       </ul>
@@ -129,7 +128,9 @@ const Board = () => {
         placeholder="테스크명을 입력하세요."
         onChange={handleInput}
       />
-      <Button onClick={addValue}>추가</Button>
+      <Button name="content" onClick={addValue}>
+        추가
+      </Button>
     </>
   );
 };
