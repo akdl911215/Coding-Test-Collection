@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Chart from "react-apexcharts";
 
 const SplineChart = () => {
@@ -36,41 +36,12 @@ const SplineChart = () => {
     { date: "2019-03-31", value: 30 },
   ]);
 
-  console.log("data", data);
-
-  const [date, setDate] = useState([]);
-  const [value, setValue] = useState([]);
-  let arr = [];
-  let arr2 = [];
-  useEffect(() => {
-    data.map((element, index) => {
-      console.log("element : ", element);
-      arr[index] = element.date;
-      arr2[index] = element.value;
-      setDate(arr);
-      setValue(arr2);
-    });
-    console.log("date", date);
-    console.log("value", value);
-    console.log("arr", arr);
-    console.log("arr2", arr2);
-
-    // option.options.xaxis.categories = arr;
-    option.series[0].data = arr2;
-    console.log("option.series[0].data: ", option.series[0].data);
-
-    option.options.xaxis.categories = arr;
-    console.log(
-      "option.options.xaxis.categories : ",
-      option.options.xaxis.categories
-    );
-  }, []);
-
   const [option, setOption] = useState({
     series: [
       {
-        // name: "Current Month",
-        data: [],
+        data: data.map((data) => {
+          return data.value;
+        }),
       },
     ],
     options: {
@@ -81,39 +52,27 @@ const SplineChart = () => {
       dataLabels: {
         enabled: false,
       },
-
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.7,
-          opacityTo: 0.9,
-          stops: [0, 90, 100],
-        },
-      },
       xaxis: {
-        categories: [],
+        categories: data.map((data) => {
+          return data.date;
+        }),
       },
     },
   });
-  // console.log("option : ", option);
-  console.log(
-    "option.options.xaxis.categories : ",
-    option.options.xaxis.categories
-  );
-  // console.log("option.series : ", option.series);
 
   const style = {
     chart: {
-      // maxWidth: "50rem",
-      margin: "35px auto",
-      width: "50rem",
+      width: "50%",
+      height: "60%",
+      margin: "0 auto",
+    },
+    div: {
+      textAlign: "center",
     },
   };
   return (
     <>
-      <h1>dd</h1>
-      <div id="chart">
+      <div style={style.div}>
         <Chart
           type="area"
           options={option.options}
