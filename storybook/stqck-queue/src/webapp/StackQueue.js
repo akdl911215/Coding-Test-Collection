@@ -3,67 +3,116 @@ import React, { useEffect, useState } from "react";
 const StackQueue = () => {
   const [nodeArr, setNodeArr] = useState([]);
   const [index, setIndex] = useState(0);
+  const [stackAndQueue, setstackAndQueue] = useState("stack");
+  const [floatValue, setFloatValue] = useState("undefined");
+  // const [style, setStyle] = useState({});
+  console.log(stackAndQueue);
+  console.log("floatValue : ", floatValue);
+
+  const style = {
+    arrBox: {
+      height: "2rem",
+      width: "8rem",
+      display: "block",
+      background: "green",
+      textAlign: "center",
+      float: floatValue,
+    },
+  };
+
+  const valueChoice = (e) => {
+    console.log("e.target.value : ", e.target.value);
+    if (e.target.value === "stack") {
+      setstackAndQueue("stack");
+      setFloatValue("undefined");
+    }
+
+    if (e.target.value === "queue") {
+      setstackAndQueue("queue");
+      setFloatValue("left");
+    }
+  };
 
   const nodeAdd = () => {
+    console.log("nodeArr : ", nodeArr);
+    console.log("stackAndQueue : ", stackAndQueue);
     nodeArr[index] = index;
-    reverseNodeArr(nodeArr, index);
-    setIndex(index + 1);
-    //
+    if (stackAndQueue === "stack") {
+      console.log("nodeArr[index]  : ", nodeArr[index]);
+      reverseNodeArr(nodeArr, index);
+      setIndex(index + 1);
+    }
 
-    return;
+    if (stackAndQueue === "queue") {
+      // nodeArr[index] = index;
+      sortNodeArr(nodeArr, index);
+      setIndex(index + 1);
+    }
   };
-  console.log("nodeArr : ", nodeArr);
-  console.log(index);
+
+  const nodeDelete = () => {
+    // if (stackAndQueue === "stack") {
+    nodeArr.splice(0, 1);
+    setNodeArr(nodeArr);
+    setIndex(index - 1);
+    // }
+  };
 
   const reverseNodeArr = (arr, index) => {
-    console.log("arr : ", arr);
     console.log("index : ", index);
     let sortArr = [];
     let tmp = 0;
 
     if (index > 0) {
-      console.log("if 시작");
-
       sortArr = arr;
-
       for (let i = 0; i < index + 1; i++) {
         for (let j = 0; j < index - i; j++) {
           if (sortArr[j] < sortArr[j + 1]) {
-            console.log("sortArr[j] : ", sortArr[j]);
-            console.log("sortArr[j + 1] : ", sortArr[j + 1]);
             tmp = sortArr[j];
             sortArr[j] = sortArr[j + 1];
             sortArr[j + 1] = tmp;
           }
         }
       }
-
-      console.log("sortArr : ", sortArr);
     }
 
-    // for (int i = 0; i < N; i++) sortArr[i] = Integer.parseInt(br.readLine());
+    setNodeArr(sortArr);
+  };
 
-    // for (int i = 0; i < N; i++) {
-    //     for (int j = 0; j < N - (i + 1); j++) {
-    //         if (sortArr[j] > sortArr[j + 1]) {
-    //             tmp = sortArr[j];
-    //             sortArr[j] = sortArr[j + 1];
-    //             sortArr[j + 1] = tmp;
-    //         }
-    //     }
-    // }
+  const sortNodeArr = (arr, index) => {
+    console.log("index : ", index);
+    let sortArr = [];
+    let tmp = 0;
+
+    if (index > 0) {
+      sortArr = arr;
+      for (let i = 0; i < index + 1; i++) {
+        for (let j = 0; j < index - i; j++) {
+          if (sortArr[j] > sortArr[j + 1]) {
+            tmp = sortArr[j];
+            sortArr[j] = sortArr[j + 1];
+            sortArr[j + 1] = tmp;
+          }
+        }
+      }
+    }
+
+    setNodeArr(sortArr);
   };
 
   return (
     <>
       <div>
         자료구조 선택
-        <select name="dataStructure">
-          <option value="stack">stack</option>
+        <select name="dataStructure" onChange={valueChoice}>
+          <option value="stack" defaultValue>
+            stack
+          </option>
           <option value="queue">queue</option>
         </select>
       </div>
 
+      <div>{nodeArr} 노드배열 </div>
       {nodeArr.length === 0 ? (
         <p>현재 노드가 존재하지 않습니다.</p>
       ) : (
@@ -71,16 +120,7 @@ const StackQueue = () => {
           {nodeArr.map((element, index) => {
             return (
               <>
-                <div
-                  style={{
-                    height: "2rem",
-                    width: "10rem",
-                    display: "block",
-                    background: "green",
-                  }}
-                >
-                  {nodeArr[index]}
-                </div>
+                <div style={style.arrBox}>{element}</div>
               </>
             );
           })}
@@ -88,7 +128,7 @@ const StackQueue = () => {
       )}
 
       <button onClick={nodeAdd}>노드 추가</button>
-      <button>노드 제거</button>
+      <button onClick={nodeDelete}>노드 제거</button>
     </>
   );
 };
