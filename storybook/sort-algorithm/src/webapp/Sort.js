@@ -2,84 +2,104 @@ import React, { useEffect, useState } from "react";
 
 const Sort = () => {
   let N = 0;
-  let arr = new Array();
-  let sorted = new Array();
-  let randomArr = [];
-  console.log("randomArr : ", randomArr);
-  // const [randomArr, setRandomArr] = useState([]);
+  let arr = new Array(N);
+  console.log("arr.legnth : ", arr.legnth);
+  // let randomArr = [];
+  // console.log("randomArr : ", randomArr);
+  const [randomArr, setRandomArr] = useState([]);
+  const [resultArr, setResultArr] = useState([]);
 
-  function merge(arr, m, middle, n) {
+  function merge(randomArr, m, middle, n) {
+    console.log("도착?");
+    console.log("merge randomArr : ", randomArr);
+
     let i = m;
     let j = middle + 1;
     let k = m;
-    sorted[N];
+    let sorted = [];
+    console.log("i ", i);
+    console.log("j ", j);
+    console.log("k ", k);
+    console.log("sorted", sorted);
 
     while (i <= middle && j <= n) {
-      if (arr[i] <= arr[j]) {
-        sorted[k] = arr[i];
+      if (randomArr[i] <= randomArr[j]) {
+        sorted[k] = randomArr[i];
         i++;
       } else {
-        sorted[k] = arr[j];
+        sorted[k] = randomArr[j];
         j++;
       }
 
       k++;
+      console.log("sorted !!! ", sorted);
     }
 
     if (i > middle) {
-      for (let z = j; z <= N; z++) {
-        sorted[k] = arr[z];
+      for (let z = j; z <= n; z++) {
+        sorted[k] = randomArr[z];
         k++;
       }
     } else {
       for (let z = i; z <= middle; z++) {
-        sorted[k] = arr[z];
+        sorted[k] = randomArr[z];
         k++;
       }
     }
 
-    for (let z = m; z <= N; z++) {
-      arr[z] = sorted[z];
-    }
-    for (let z = m; z <= N; z++) {
-      console.log(arr[z], " ");
-    }
+    console.log("sorted :: ", sorted);
+    setResultArr(sorted);
+    console.log("resultArr : ", resultArr);
+
+    // for (let z = i; z <= N; z++) {
+    //   randomArr[z] = sorted[z];
+    //   console.log("randomArr[z] : ", randomArr[z]);
+    // }
+    // for (let z = m; z <= N; z++) {
+    //   console.log(arr[z], " ");
+    // }
   }
 
-  function mergeSort(arr, m, n) {
-    console.log("arr : ", arr);
-    if (m < n) {
-      const middle = (m + n) / 2;
-      mergeSort(arr, m, middle);
-      mergeSort(arr, middle + 1, n);
-      merge(arr, m, middle, n);
+  function mergeSort(randomArr, m, n) {
+    const M = parseInt(m);
+    const N = parseInt(n);
+    if (M < N) {
+      console.log("m < n 작을 경우");
+      const middle = parseInt((M + N) / 2);
+      mergeSort(randomArr, M, middle);
+      mergeSort(randomArr, middle + 1, N);
+      console.log("merge 함수 시작");
+      merge(randomArr, M, middle, N);
     }
+
+    return;
   }
   const getRandomNumber = (n = 100) => {
-    return Math.floor(Math.random() * n);
+    return Math.floor(Math.random() * n + 1);
   };
 
   const getRandomArr = (n = 100) => {
     N = n;
-    arr[N];
+    // arr[N];
+
     console.log("N : ", N);
+
     const temp = [];
 
     for (let i = 0; i < n; i++) {
       temp.push(getRandomNumber(n));
     }
 
-    // console.log("temp : ", temp);
-
-    // randomArr = temp.map((element) => {
+    // const arr = temp.map((element) => {
     //   return element;
     // });
-    randomArr = temp;
-    console.log("randomArr : ", randomArr);
+    console.log("temp : ", temp);
+    // console.log("map 후 arr : ", randomArr);
+    // setRandomArr(arr)
+    setRandomArr(temp);
+    mergeSort(temp, 0, N - 1);
 
-    // mergeSort(arr, 0, N - 1);
-
-    return randomArr;
+    return temp;
   };
 
   // 퍼포먼스 확인
@@ -99,7 +119,9 @@ const Sort = () => {
   };
 
   getRandomArr(5);
-  getPerformance(mergeSort, randomArr);
+  console.log("randomArr : ", randomArr);
+  // getPerformance(mergeSort, randomArr);
+  // getPerformance(mergeSort(), getRandomArr(5));
 
   return <div>Sort</div>;
 };
