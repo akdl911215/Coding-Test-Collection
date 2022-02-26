@@ -19,7 +19,6 @@ const StackQueue = () => {
   };
 
   const valueChoice = (e) => {
-    console.log("e.target.value : ", e.target.value);
     if (e.target.value === "stack") {
       setstackAndQueue("stack");
       setFloatValue(false);
