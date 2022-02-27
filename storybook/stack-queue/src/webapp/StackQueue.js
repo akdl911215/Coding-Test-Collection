@@ -48,12 +48,10 @@ const StackQueue = () => {
     if (stackAndQueue === "stack") {
       nodeArr.shift();
       setNodeArr(nodeArr);
-      setIndex(index - 1);
     }
     if (stackAndQueue === "queue") {
-      nodeArr.pop();
+      nodeArr.shift();
       setNodeArr(nodeArr);
-      setIndex(index - 1);
     }
   };
 
