@@ -1,11 +1,9 @@
 import "./App.css";
-// import Sort from "./webapp/Sort";
-import Sort2 from "./webapp/Sort2";
+import Sort from "./webapp/Sort";
 function App() {
   return (
     <>
-      {/* <Sort /> */}
-      <Sort2 />
+      <Sort />
     </>
   );
 }
