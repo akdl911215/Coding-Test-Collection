@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const StackQueue = () => {
   const [nodeArr, setNodeArr] = useState([]);
   const [index, setIndex] = useState(0);
+  const [valueIndex, setValueIndex] = useState(0);
   const [stackAndQueue, setstackAndQueue] = useState("stack");
   const [floatValue, setFloatValue] = useState(false);
   console.log(stackAndQueue);
@@ -33,8 +34,7 @@ const StackQueue = () => {
   };
 
   const nodeAdd = () => {
-    nodeArr[index] = index;
-    console.log(nodeArr);
+    nodeArr[valueIndex] = index;
     if (stackAndQueue === "stack") {
       reverseNodeArr(nodeArr, index);
     }
@@ -42,15 +42,17 @@ const StackQueue = () => {
       sortNodeArr(nodeArr, index);
     }
     setIndex(index + 1);
+    setValueIndex(valueIndex + 1);
   };
 
   const nodeDelete = () => {
+    nodeArr.shift();
     if (stackAndQueue === "stack") {
-      nodeArr.shift();
+      setValueIndex(valueIndex - 1);
       setNodeArr(nodeArr);
     }
     if (stackAndQueue === "queue") {
-      nodeArr.shift();
+      setValueIndex(valueIndex - 1);
       setNodeArr(nodeArr);
     }
   };
