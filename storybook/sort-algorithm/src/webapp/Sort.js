@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Sort3 = () => {
+const Sort = () => {
   let unsortedArray = [];
 
   const getPerformance = (func, params) => {
@@ -56,4 +56,4 @@ const Sort3 = () => {
   return <div>sort</div>;
 };
 
-export default Sort3;
+export default Sort;

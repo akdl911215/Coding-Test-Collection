@@ -8,42 +8,71 @@ const Board = () => {
   });
   const { content, keyword } = inputText;
 
+  const [completion, setCompletion] = useState(false);
+  const completionCheck = () => {
+    setCompletion(!completion);
+  };
+
   const handleInput = (e) => {
     setInputText({ ...inputText, [e.target.name]: e.target.value });
   };
 
   const deleteArr = (index) => {
     console.log("deleteArr index : ", index);
-    contentArr.splice(index, 1);
+    // notCompletedArr.splice(index, 1);
     setContentArr((contentArr) => [...contentArr]);
   };
 
-  const [contentArr, setContentArr] = useState([]);
-  const [contentArr2, setContentArr2] = useState([
-    {
-      id: 0,
-      content: "",
-      boolValue: false,
-    },
-  ]);
   const addValue = (e) => {
+    console.log("event : ", e);
     setContentArr((contentArr) => [...contentArr, content]);
     setInputText({ ...inputText, [e.target.name]: "" });
   };
 
-  const [completion, setCompletion] = useState(false);
-  const completionCheck = () => {
-    setCompletion(!completion);
-  };
-
   const [schedule, setSchedule] = useState(false);
-  const scheduleCheck = ({ target }) => {
-    console.log("target : ", target);
-    console.log("!schedule : ", !schedule);
-    setSchedule(!schedule);
+  const [contentArr, setContentArr] = useState([]);
+  const [completedArr, setCompletedArr] = useState([]);
+  const [notCompletedArr, setNotCompletedArr] = useState([]);
+
+  // const completedCheck = (index) => {
+  //   console.log("index : ", index);
+  //   // notCompletedArr.push(completedArr.slice(index, 1));
+  //   setNotCompletedArr(completedArr.splice(index, 1));
+  // };
+  // const notCompletedCheck = (index) => {
+  //   console.log(index);
+  //   // completedArr.push(notCompletedArr.slice(index, 1));
+  //   setCompletedArr(notCompletedArr.splice(index, 1));
+  // };
+
+  // const [checkbox, setCheckbox] = useState([]);
+  let checkbox = [];
+  const checkiBox = (e, index, element) => {
+    // console.log("event : ", e.target.checked);
+    console.log("event : ", e);
+    console.log("index : ", index);
+    console.log("element : ", element);
+    for (let i = 0; i < contentArr.length; i++) {
+      checkbox[i] = false;
+    }
+    for (let i = 0; i < contentArr.length; i++) {
+      // checkbox[i] = false;
+
+      if (e.target.checked === true) {
+        checkbox[index] = e.target.checked;
+      }
+
+      if (e.target.checked === false) {
+        checkbox[index] = false;
+      }
+    }
+
+    console.log("checkbox : ", checkbox);
   };
 
   console.log("contentArr : ", contentArr);
+  // console.log("completedArr : ", completedArr);
+  // console.log("notCompletedArr : ", notCompletedArr);
   return (
     <>
       <Input
@@ -77,9 +106,10 @@ const Board = () => {
                   return (
                     <>
                       <ul>
-                        <Checkbox
+                        <input
+                          type="checkbox"
                           checked={schedule}
-                          onChange={(e) => scheduleCheck(e)}
+                          onChange={(e) => checkiBox(e, index)}
                         />
                         {element},{index}
                         <Button onClick={() => deleteArr(index)}>삭제</Button>
@@ -108,8 +138,11 @@ const Board = () => {
                 .map((element, index) => {
                   return (
                     <>
-                      <ul>
-                        <Checkbox onChange={scheduleCheck} />
+                      <ul key={index}>
+                        <input
+                          type="checkbox"
+                          onChange={(e) => checkiBox(e, index, element)}
+                        />
                         {element},{index}
                         <Button onClick={() => deleteArr(index)}>삭제</Button>
                       </ul>
