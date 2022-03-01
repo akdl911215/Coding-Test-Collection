@@ -1,12 +1,16 @@
 - DOCTYPE 를 선언하지 않으면 어떤일이 발생하나요?
-doctype 선언은 브라우저가 예상해야 하는 문서의 종류를 알려줍니다.
-doctype 포함하지 않아도 콘텐츠는 올바르게 표시될 수 있습니다. 
-그러나 에러가 발생 할 수도 있기 때문에 모든 페이지에 doctype을 포함하는 것이 좋습니다.
+DOCTYPE 선언은 브라우저가 예상해야 하는 문서의 종류를 알려줍니다.
+DOCTYPE 포함하지 않아도 콘텐츠는 올바르게 표시될 수 있습니다. 
+그러나 에러가 발생 할 수도 있기 때문에 모든 페이지에 DOCTYPE 포함하는 것이 좋습니다.
 
 - 브라우저 렌더링 요소 중 Reflow, Repaint 의 정의와 관련되는 대표적인 CSS 속성을 작성 해 주세요.
-Reflow : position, width, height, left, top, right, bottom, margin, padding, border, border-width, clear, display, float, font-family, font-size, font-weight, line-height, min-height, overflow, text-align, vertical-align, white-space
+Reflow : position, width, height, left, top, right, bottom, margin, padding, border, 
+          border-width, clear, display, float, font-family, font-size, font-weight, 
+          line-height, min-height, overflow, text-align, vertical-align, white-space
 
-Repaint : background, background-image, background-position, background-repeat, background-size, border-radius, border-style, box-shadow, color, line-style, outline, outline-color, ouline-style, outline-width, text-decoration, visibility
+Repaint : background, background-image, background-position, background-repeat, background-size, 
+          border-radius, border-style, box-shadow, color, line-style, outline, outline-color, ouline-style, 
+          outline-width, text-decoration, visibility
 
 - <script> 태그의 defer, async 속성의 차이를 작성 해 주세요
 Defer = 페이지가 모두 로드된 후에 해당 외부 스크립트가 실행
@@ -22,13 +26,17 @@ Async = 브라우저가 페이지를 파싱되는 동안에도 스크립트가 �
 우아한 성능 저하법은 최신 기술에 맞춘 후 오래된 기기 혹은 기술에서도 동작하도록 하기 위해 최적화 시키는 방법
 
 - FOUC 는 왜 생기는 건가요? 어떻게 피할 수 있는지 작성 해 주세요.
-FOUC는 스타일의 적용 전과 적용 후가 그대로 화면에 노출된 상태로 변경되는 현상이며, 자바스크립트를 이용해 DOM 구조를 변경하면 대부분의 브라우저가 콘텐츠를 화면에 노출한 상태로 변경되어 FOUC를 유발
-해결책은 기본적으로 <head> 요소안에 CSS를 링크하고, @import의 사용을 자제하고, 자바스크립트의 선언순서, 위치를 변경, FOUC를 유발하는 구역을 스크립트가 모두 적용된 후 노출하게 한다.
+FOUC는 스타일의 적용 전과 적용 후가 그대로 화면에 노출된 상태로 변경되는 현상이며,
+자바스크립트를 이용해 DOM 구조를 변경하면 대부분의 브라우저가 콘텐츠를 화면에 노출한 상태로 변경되어 FOUC를 유발
 
-CSS에서 floating clearing 하지않으면 어떤일이 발생하고 왜 이런일이 발생하는지 작성 해 주세요.
-Float 속성은 정렬을 위해 사용한다. 일반적인 정렬과는 다르게 float 정렬된 것 주위로 다른 컨텐츠가 흐르듯이 배치가 되는 문제가 발생한다. Clear 속성은 이를 해제하기 위해 사용한다. Clear을 지정하면 지정된 영역 이후로는 더 이상 float속성이 작동하지 않는다.
+해결책은 기본적으로 <head> 요소안에 CSS를 링크하고, @import의 사용을 자제하고, 자바스크립트의 선언순서, 위치를 변경, 
+FOUC를 유발하는 구역을 스크립트가 모두 적용된 후 노출하게 한다.
 
-- CSS의 box-model 에서 블록요소의 영역을 차지하는 CSS속성을 작성 해 주세요.
+- CSS에서 floating clearing 하지않으면 어떤일이 발생하고 왜 이런일이 발생하는지 작성 해 주세요.
+Float 속성은 정렬을 위해 사용한다. 일반적인 정렬과는 다르게 float 정렬된 것 주위로 다른 컨텐츠가 흐르듯이 배치가 되는 문제가 발생한다.
+Clear 속성은 이를 해제하기 위해 사용한다. Clear을 지정하면 지정된 영역 이후로는 더 이상 float속성이 작동하지 않는다.
+
+- CSS의 box-model 에서 블록요소의 영역을 차지하는 CSS속성과 인라인 레벨의 CSS 속성을 작성 해 주세요.
 블록 레벨 태그 : <p>, <h1>~<h6>,<ul><ol>,<div>,<blockquote>,<form>,<hr>,
 <table>,<fieldset>,<address>
 
@@ -40,31 +48,39 @@ Float 속성은 정렬을 위해 사용한다. 일반적인 정렬과는 다르�
 === : 일치비교(타입과 값까지 일치해야 true)
 
 - 매개변수이름 foo 의 값이 존재하지 않으면 false, 존재하면 true 를 반환하는 함수 bar 을 ES6 Arrow Function을 이용해 한줄로 작성 해 주세요.
-const arrowFuncton = (foo) =>( foo ? true : false);
+const arrowFuncton = (foo) => (foo ? true : false);
 
 - 자바스크립트 이벤트 루프에서 마이크로 태스크는 자바스크립트의 어떤 구문으로 사용해야 할까요?
-Promise에 의해 생성됩니다.  .then/catch/finally 핸들러의 실행 명령이 마이크로 태스크입니다.
+Promise에 의해 생성된다.
+.then/catch/finally 핸들러의 실행 명령이 마이크로 태스크이다.
 
 - 자바스크립트에서 객체 및 배열 자료형은 왜 불변성 형태로 관리(특히 리액트나 뷰에서)되어야 하나요?
-기존의 배열을 push, pop등을 사용해서 변화를 준다면 예측할 수 없는 에러가 발생할 수 있는 가능서이 높아집니다. 그렇기 때문에 상황에 맞춰 map, filter등 새로운 배열을 만들어서 사용하는게 좋습니다.
+기존의 배열을 push, pop등을 사용해서 변화를 준다면 예측할 수 없는 에러가 발생할 수 있는 가능성이 높아진다. 
+그렇기 때문에 상황에 맞춰 map, filter등 새로운 배열을 만들어서 사용하는게 좋다.
 
 - 자바스크립트에서 이벤트 버블링과 캡쳐링에 대한 차이점을 작성 해 주세요.
-버블링은 한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작합니다. 가장 최상단의 조상 요소를 만날 떄까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작합니다. (바텀업)
-캡처링은 버블링과 반대로 이벤트가 최상단에서부터 하위 요소로 전파되는 것입니다.(탑다운)
+버블링은 한 요소에 이벤트가 발생하면, 이 요소에 할당된 핸들러가 동작하고, 이어서 부모 요소의 핸들러가 동작한다. 
+가장 최상단의 조상 요소를 만날 떄까지 이 과정이 반복되면서 요소 각각에 할당된 핸들러가 동작한다. (바텀업)
+캡처링은 버블링과 반대로 이벤트가 최상단에서부터 하위 요소로 전파되는 것이다.(탑다운)
 
 - 순수함수라는 것은 어떤것을 의미하나요?
-순수함수란 부수효과(사이드 이펙트)가 없는 함수입니다. 함수에 동일한 인자가 주어졌을 때 항상 같은 것을 리턴하는 함수이며 외부의 상태를 변경하지 않는 함수를 뜻합니다.
+순수함수란 부수효과(사이드 이펙트)가 없는 함수이다. 
+함수에 동일한 인자가 주어졌을 때 항상 같은 것을 리턴하는 함수이며 외부의 상태를 변경하지 않는 함수를 뜻한다.
 
 - CDN(Content Delivery Network) 의 정의와 언제 어떻게 사용해야할 지 작성 해 주세요
-CDN이란 지리적 제약 없이 전 세계 사용자에게 빠르고 안전하게 콘텐츠를 전송할 수 있는 콘텐츠 전송 기술을 의미합니다.
-CDN은 동영상 스트리밍이나 온라인 게임, 대용량 파일 저농, 그리고 해상도가 높아 용량이 큰 이미지를 다루는 쇼핑몰, 포털 사이트 등에서 안정적인 서비스 제공을 위해 활용됩니다.
+CDN이란 지리적 제약 없이 전 세계 사용자에게 빠르고 안전하게 콘텐츠를 전송할 수 있는 콘텐츠 전송 기술을 의미한다.
+CDN은 동영상 스트리밍이나 온라인 게임, 대용량 파일 저농, 그리고 해상도가 높아 용량이 큰 이미지를 다루는 쇼핑몰, 
+포털 사이트 등에서 안정적인 서비스 제공을 위해 활용된다.
 
 - CORS (Cross Origin Resource Sharing) 에 대한 설명을 작성 해 주세요. 그리고 어떤방법으로 위 이슈를 해결할 수 있는지 작성 해 주세요.
-브라우저에서는 보안적인 이유로 cross-origin HTTP 요청들을 제한합니다. 그래서 CORS는 서로 다른 origin 간에 HTTP request가 가능하도록 해주는 방식입니다..
-해결방법은 1.서버측 응답에서 접근 권한을 주는 헤더를 추가하여 해결, 2.특정 도메인이나 특정 요청에만 응답하게 옵션을 설정, 3.proxy 속성을 설정하여 서버를 사용하면 된다.
+브라우저에서는 보안적인 이유로 cross-origin HTTP 요청들을 제한한다. 
+그래서 CORS는 서로 다른 origin 간에 HTTP request가 가능하도록 해주는 방식이다.
+해결방법은 1.서버측 응답에서 접근 권한을 주는 헤더를 추가하여 해결, 
+          2.특정 도메인이나 특정 요청에만 응답하게 옵션을 설정, 
+          3.proxy 속성을 설정하여 서버를 사용하면 된다.
 
 - HTTP/1.1, HTTP/2 의 차이점을 작성 해 주세요.
-가장 큰 차이는 속도입니다. 2.0은 헤더를 압축해서 보내기도하고, 한번의 연결로 동시에 에러메시지를 주고 받을 수도 있습니다.
+가장 큰 차이는 속도이다. 2.0은 헤더를 압축해서 보내기도하고, 한번의 연결로 동시에 에러메시지를 주고 받을 수도 있다.
 
 
 
