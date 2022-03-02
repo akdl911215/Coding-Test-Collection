@@ -1,78 +1,48 @@
-import React, { useState } from "react";
-import { Button, Input, Checkbox } from "semantic-ui-react";
+import React, { useRef, useState } from "react";
+import { Button, Input } from "semantic-ui-react";
 
 const Board = () => {
+  const [completion, setCompletion] = useState(false);
   const [inputText, setInputText] = useState({
     content: "",
     keyword: "",
   });
   const { content, keyword } = inputText;
 
-  const [completion, setCompletion] = useState(false);
-  const completionCheck = () => {
-    setCompletion(!completion);
-  };
-
   const handleInput = (e) => {
     setInputText({ ...inputText, [e.target.name]: e.target.value });
   };
 
+  const [contentArr, setContentArr] = useState([]);
+  const [check, setCheck] = useState(false);
+  const arrId = useRef(0);
+  const addValue = (e) => {
+    const contentState = {
+      id: arrId.current,
+      value: content,
+      done: false,
+    };
+    setContentArr([...contentArr, contentState]);
+    setInputText({ ...inputText, [e.target.name]: "" });
+    arrId.current += 1;
+  };
+
   const deleteArr = (index) => {
-    console.log("deleteArr index : ", index);
-    // notCompletedArr.splice(index, 1);
+    contentArr.splice(index, 1);
     setContentArr((contentArr) => [...contentArr]);
   };
 
-  const addValue = (e) => {
-    console.log("event : ", e);
-    setContentArr((contentArr) => [...contentArr, content]);
-    setInputText({ ...inputText, [e.target.name]: "" });
+  const checkBox = (e, index) => {
+    const contentState = {
+      id: index,
+      value: contentArr[index].value,
+      done: e.target.checked === true ? true : false,
+    };
+
+    contentArr.splice(index, 1, contentState);
+    setCheck(!check);
   };
 
-  const [schedule, setSchedule] = useState(false);
-  const [contentArr, setContentArr] = useState([]);
-  const [completedArr, setCompletedArr] = useState([]);
-  const [notCompletedArr, setNotCompletedArr] = useState([]);
-
-  // const completedCheck = (index) => {
-  //   console.log("index : ", index);
-  //   // notCompletedArr.push(completedArr.slice(index, 1));
-  //   setNotCompletedArr(completedArr.splice(index, 1));
-  // };
-  // const notCompletedCheck = (index) => {
-  //   console.log(index);
-  //   // completedArr.push(notCompletedArr.slice(index, 1));
-  //   setCompletedArr(notCompletedArr.splice(index, 1));
-  // };
-
-  // const [checkbox, setCheckbox] = useState([]);
-  let checkbox = [];
-  const checkiBox = (e, index, element) => {
-    // console.log("event : ", e.target.checked);
-    console.log("event : ", e);
-    console.log("index : ", index);
-    console.log("element : ", element);
-    for (let i = 0; i < contentArr.length; i++) {
-      checkbox[i] = false;
-    }
-    for (let i = 0; i < contentArr.length; i++) {
-      // checkbox[i] = false;
-
-      if (e.target.checked === true) {
-        checkbox[index] = e.target.checked;
-      }
-
-      if (e.target.checked === false) {
-        checkbox[index] = false;
-      }
-    }
-
-    console.log("checkbox : ", checkbox);
-  };
-
-  console.log("contentArr : ", contentArr);
-  // console.log("completedArr : ", completedArr);
-  // console.log("notCompletedArr : ", notCompletedArr);
   return (
     <>
       <Input
@@ -82,38 +52,42 @@ const Board = () => {
         onChange={handleInput}
         placeholder="검색 키워드를 입력하세요."
       />
-      <hr />
+      <hr align="left" width="25%" />
       <div>
-        <b>일정 목록</b> 완료 목록만 보기
-        <Checkbox onChange={completionCheck} />
+        <b>일정 목록</b> ㅤㅤㅤㅤ완료 목록만 보기
+        <input type="checkbox" onChange={() => setCompletion(!completion)} />
       </div>
       {completion ? (
         <>
-          <h1>완료 목록</h1>
-          {contentArr.length === 0 ? (
+          {contentArr.filter((element) => element.value).length === 0 ? (
             <p>등록된 일정이 없습니다.</p>
           ) : (
             <>
               {contentArr
                 .filter((element) => {
                   if (keyword === "") {
-                    return element;
-                  } else if (element.includes(keyword)) {
-                    return element;
+                    return element.value;
+                  } else if (element.value.includes(keyword)) {
+                    return element.value;
                   }
                 })
                 .map((element, index) => {
                   return (
                     <>
-                      <ul>
-                        <input
-                          type="checkbox"
-                          checked={schedule}
-                          onChange={(e) => checkiBox(e, index)}
-                        />
-                        {element},{index}
-                        <Button onClick={() => deleteArr(index)}>삭제</Button>
-                      </ul>
+                      {element.done ? (
+                        <ul>
+                          <input
+                            type="checkbox"
+                            checked="true"
+                            onChange={(e) => checkBox(e, index)}
+                          />
+
+                          {element.value}
+                          <Button onClick={() => deleteArr(index)}>삭제</Button>
+                        </ul>
+                      ) : (
+                        ""
+                      )}
                     </>
                   );
                 })}
@@ -122,30 +96,34 @@ const Board = () => {
         </>
       ) : (
         <>
-          <h1>미완료 목록</h1>
-          {contentArr.length === 0 ? (
+          {contentArr.filter((element) => element.value).length === 0 ? (
             <p>등록된 일정이 없습니다.</p>
           ) : (
             <>
               {contentArr
                 .filter((element) => {
                   if (keyword === "") {
-                    return element;
-                  } else if (element.includes(keyword)) {
-                    return element;
+                    return element.value;
+                  } else if (element.value.includes(keyword)) {
+                    return element.value;
                   }
                 })
                 .map((element, index) => {
                   return (
                     <>
-                      <ul key={index}>
-                        <input
-                          type="checkbox"
-                          onChange={(e) => checkiBox(e, index, element)}
-                        />
-                        {element},{index}
-                        <Button onClick={() => deleteArr(index)}>삭제</Button>
-                      </ul>
+                      {element.done ? (
+                        ""
+                      ) : (
+                        <ul>
+                          <input
+                            type="checkbox"
+                            onChange={(e) => checkBox(e, index)}
+                          />
+
+                          {element.value}
+                          <Button onClick={() => deleteArr(index)}>삭제</Button>
+                        </ul>
+                      )}
                     </>
                   );
                 })}
@@ -153,7 +131,7 @@ const Board = () => {
           )}
         </>
       )}
-      <hr />
+      <hr align="left" width="25%" />
       <Input
         type="text"
         name="content"
