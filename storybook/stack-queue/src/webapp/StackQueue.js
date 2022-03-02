@@ -47,14 +47,8 @@ const StackQueue = () => {
 
   const nodeDelete = () => {
     nodeArr.shift();
-    if (stackAndQueue === "stack") {
-      setValueIndex(valueIndex - 1);
-      setNodeArr(nodeArr);
-    }
-    if (stackAndQueue === "queue") {
-      setValueIndex(valueIndex - 1);
-      setNodeArr(nodeArr);
-    }
+    setValueIndex(valueIndex - 1);
+    setNodeArr(nodeArr);
   };
 
   const reverseNodeArr = (arr, index) => {
