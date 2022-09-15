@@ -1,51 +1,73 @@
 import React, { useState } from "react";
 // import GoogleLogin from "react-google-login";
-import axios from "axios";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin } from "@react-oauth/google";
-
-interface UserState {
-  email: string;
-  name: string;
-}
+import {
+  CredentialResponse,
+  GoogleOAuthProvider,
+  GoogleLogin,
+  googleLogout,
+} from "@react-oauth/google";
+import { OAuth2Client } from "google-auth-library";
 
 const Login = () => {
-  //클라이언트 ID (환경변수)
   const googleClientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
-  //사용자 정보를 담아둘 userObj
-  const [userObj, setUserObj] = useState<UserState>({
-    email: "",
-    name: "",
-  });
-  //로그인 성공시 res처리
-  const onLoginSuccess = (res: any) => {
-    console.log("success res : ", res);
-    setUserObj({
-      ...userObj,
-      email: res.profileObj.email,
-      name: res.profileObj.name,
-    });
+  const [user, setUser] = useState({});
+  console.log("user : ", user);
 
-    // POST /o/oauth2/device/code HTTP/1.1
-    // Host: accounts.google.com
-    // Content-Type: application/x-www-form-urlencoded
-    // client_id=1084945748469-eg34imk572gdhu83gj5p0an9fut6urp5.apps.googleusercontent.com&
-    // scope=https://www.googleapis.com/auth/calendar
+  const loginSuccess = (res: CredentialResponse) => {
+    alert("로그인이 진행되었습니다");
+    console.log(setUser(res));
+
+    //
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://yourbackend.example.com/tokensignin");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      console.log("Signed in as: " + xhr.responseText);
+    };
+    xhr.send("idtoken=" + res.credential);
+    console.log("xhr : ", xhr);
+
+    //
+    // const client = new OAuth2Client(res.clientId);
+    // const verify = async () => {
+    //   const ticket = await client.verifyIdToken({
+    //     idToken: res.credential || "",
+    //     audience: res.credential, // Specify the CLIENT_ID of the app that accesses the backend
+    //     // Or, if multiple clients access the backend:
+    //     //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    //   });
+    //   console.log("ticket : ", ticket);
+
+    //   const payload = ticket.getPayload();
+    //   console.log("payload : ", payload);
+    //   if (payload !== undefined) {
+    //     const userid = payload["sub"];
+    //     console.log("userid : ", userid);
+    //   }
+    //   verify().catch(console.error);
+    // };
   };
-  console.log("userObj : ", userObj);
 
   return (
     <div>
       <GoogleOAuthProvider clientId={googleClientId}>
         <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
+          onSuccess={(credentialResponse) => loginSuccess(credentialResponse)}
           onError={() => {
-            console.log("Login Failed");
+            console.error("Login Failed");
           }}
+          useOneTap
         />
       </GoogleOAuthProvider>
+      <button
+        onClick={() => {
+          alert("로그아웃이 되었습니다.");
+          googleLogout();
+          window.location.reload();
+        }}
+      >
+        로그아웃
+      </button>
     </div>
   );
 };

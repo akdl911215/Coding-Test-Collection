@@ -36,25 +36,10 @@ const Calender = () => {
       "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
     ],
   };
-  const apiCalendar = new ApiCalendar(config);
-  // console.log("ApiCalendar :: ", ApiCalendar);
-  const handleLogin = (name: string) => {
-    if (name === "sign-in") {
-      const signin = apiCalendar.handleAuthClick();
-      console.log(" apiCalendar.handleAuthClick() : ", signin);
-    } else if (name === "sign-out") {
-      console.log(
-        "apiCalendar.handleSignoutClick() : ",
-        apiCalendar.handleSignoutClick()
-      );
-    }
-  };
   return (
     <>
       <div>
         <Login />
-        <button onClick={(e) => handleLogin("sign-in")}>sign-in</button>
-        <button onClick={(e) => handleLogin("sign-out")}>sign-out</button>
         <button>일정 추가</button>
       </div>
       <FullCalendar
