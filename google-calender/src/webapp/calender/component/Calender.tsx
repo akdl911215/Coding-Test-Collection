@@ -6,6 +6,7 @@ import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import { GoogleCalendarEventList } from "../../api/calendarApi";
 import { CalendarState } from "../config";
 import Login from "../../users/component/Login";
+import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
 
 const Calender = () => {
   const ID = process.env.REACT_APP_GOOGLE_CALENDAR_ID;
@@ -43,7 +44,7 @@ const Calender = () => {
         <button>일정 추가</button>
       </div>
       <FullCalendar
-        plugins={[dayGridPlugin, googleCalendarPlugin]}
+        plugins={[dayGridPlugin, googleCalendarPlugin, interactionPlugin]}
         initialView="dayGridWeek"
         googleCalendarApiKey={config.apiKey}
         events={data}
@@ -52,6 +53,9 @@ const Calender = () => {
         eventColor={"#F2921D"}
         height={"660px"}
         // Toolbar
+        // navLinkDayClick={(CalendarApi, date) =>
+        //   console.log(`${CalendarApi} , ${date} `)
+        // }
       />
     </>
   );
