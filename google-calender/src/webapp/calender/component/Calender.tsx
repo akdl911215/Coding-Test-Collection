@@ -7,8 +7,6 @@ import { GoogleCalendarEventList } from "../../api/calendarApi";
 import { CalendarState } from "../config";
 import Login from "../../users/component/Login";
 import interactionPlugin, { Draggable } from "@fullcalendar/interaction";
-import { useGoogleApi } from "react-gapi";
-import { createGapiMock } from "react-gapi/testing";
 
 const Calender = () => {
   const ID = process.env.REACT_APP_GOOGLE_CALENDAR_ID || "";
@@ -40,54 +38,10 @@ const Calender = () => {
     ],
   };
 
-  // https://github.com/ph-fritsche/react-gapi
-
-  const gapi = useGoogleApi({
-    scopes: ["https://www.googleapis.com/auth/calendar"],
-  });
-  console.log("gapi : ", gapi);
-
-  const auth = gapi?.auth2?.getAuthInstance();
-  console.log("auth : ", auth);
-
-  it("Sign in", async () => {
-    const { user } = createGapiMock();
-    console.log("user : ", user);
-    // render(
-    //   <GoogleApiProvider clientId="foo">
-    //     <MyAuthComponent />
-    //   </GoogleApiProvider>
-    // );
-
-    // userEvent.click(await screen.findByRole("button", { name: /login/i }));
-
-    // act(() => {
-    //   user.grantsScopes?.(true, { name: "John Doe" });
-    // });
-
-    // expect(await screen.findByText(/Logged in as /)).toHaveTextContent(
-    //   '"John Doe"'
-    // );
-  });
-
   return (
     <>
       <div>
-        {!auth ? (
-          <span>Loaging...</span>
-        ) : auth?.isSignedIn.get() ? (
-          `Logged in as "${auth.currentUser.get().getBasicProfile().getName()}"`
-        ) : (
-          // <Login />
-          <button
-            onClick={() => {
-              auth.signIn();
-              console.log("auth.signIn() : ", auth.signIn());
-            }}
-          >
-            Login
-          </button>
-        )}
+        <Login />
 
         <button onClick={(e) => console.log(e)}>일정 추가</button>
       </div>

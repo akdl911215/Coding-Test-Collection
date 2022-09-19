@@ -6,23 +6,11 @@ import {
   GoogleLogin,
   googleLogout,
 } from "@react-oauth/google";
-import { OAuth2Client } from "google-auth-library";
-import { useGoogleApi } from "react-gapi";
 
+// https://developers.google.com/calendar/api/guides/auth 이거 마저 읽기
 const Login = () => {
   const googleClientId: string = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
   const [user, setUser] = useState({});
-  console.log("user : ", user);
-
-  const gapi = useGoogleApi({
-    discoveryDocs: ["https://www.googleapis.com/calendar/v3/calendars/"],
-    scopes: ["https://www.googleapis.com/auth/calendar"],
-  });
-  console.log("Login gapi : ", gapi);
-
-  if (!gapi) {
-    return <div>Some loading screen</div>;
-  }
 
   const loginSuccess = (res: CredentialResponse) => {
     alert("로그인이 진행되었습니다");
@@ -58,6 +46,7 @@ const Login = () => {
     //   verify().catch(console.error);
     // };
   };
+  console.log("user : ", user);
 
   return (
     <div>
