@@ -12,7 +12,7 @@
     "removeComments": true, //컴파일시 주석제거
 
     "strict": true, //strict 관련, noimplicit 어쩌구 관련 모드 전부 켜기
-    "noImplicitAny": false, //any타입 금지 여부
+    "noImplicitAny": true, //any타입 금지 여부
     "strictNullChecks": true, //null, undefined 타입에 이상한 짓 할시 에러내기
     "strictFunctionTypes": true, //함수파라미터 타입체크 강하게
     "strictPropertyInitialization": true, //class constructor 작성시 타입체크 강하게

@@ -1,14 +1,11 @@
 const db = require("../api/middlewares/pool");
 require("dotenv").config();
 const date = require("../common/date");
-// const currentDate = date.date();
 const currentDate = date.today();
 
 exports.register = (req) => {
-  console.log("register req : ", req);
   const { email, password, nickname, posts } = req;
   const sql = `INSERT INTO member (email, password, nickname, createdAt, posts) VALUES ('${email}', '${password}', '${nickname}', '${currentDate}', '${posts}')`;
-  console.log("sql : ", sql);
 
   return new Promise((resolve) => {
     try {
@@ -28,6 +25,10 @@ exports.register = (req) => {
               message: "회원가입 성공하였습니다.",
               code: 200,
               success: doc,
+              email,
+              password,
+              nickname,
+              posts,
             });
           }
         });

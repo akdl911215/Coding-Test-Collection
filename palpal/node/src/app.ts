@@ -1,4 +1,5 @@
-const express = require("express");
+// const express = require("express");
+import express from "express";
 const app = express();
 const hostname = "localhost";
 const PORT = 8080;
