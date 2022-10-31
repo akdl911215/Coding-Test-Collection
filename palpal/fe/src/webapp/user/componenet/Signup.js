@@ -52,7 +52,7 @@ const Signup = () => {
           <span className={styles.titleText}>SignUp</span>
         </div>
         <div className={styles.signupBody}>
-          <span>아이디</span>
+          <span>이메일</span>
           <input
             name="email"
             placeholder="이메일을 입력하세요"
