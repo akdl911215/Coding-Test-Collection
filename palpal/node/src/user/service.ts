@@ -4,7 +4,12 @@ const userModel = require("./model");
 require("dotenv").config();
 
 class service {
-  async signup(user) {
+  async signup(user: {
+    email: string;
+    password: string;
+    nickname: string;
+    posts: string;
+  }) {
     return userRepository.register(user);
   }
 }
