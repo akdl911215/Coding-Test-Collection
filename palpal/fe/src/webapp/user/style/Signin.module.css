@@ -1,0 +1,277 @@
+.signinBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+
+  position: absolute;
+  width: 350px;
+  height: 375px;
+  left: calc(50% - 350px / 2);
+  top: calc(50% - 375px / 2 + 0.5px);
+
+  background: #ffffff;
+  box-shadow: 0px 10px 25px rgba(29, 52, 54, 0.08);
+  border-radius: 10px;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+  width: 310px;
+  height: 25px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.titleText {
+  width: 47px;
+  height: 25px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 18px;
+  line-height: 25px;
+
+  letter-spacing: 0.02em;
+  color: #29a19c;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 20px;
+
+  width: 310px;
+  height: 290px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.usernameBox {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 310px;
+  height: 39px;
+
+  border: 1px solid rgba(40, 40, 70, 0.01);
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.passwordBox {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 10px;
+
+  width: 310px;
+  height: 39px;
+  border: 1px solid rgba(40, 40, 70, 0.1);
+  border-radius: 8px;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.signinBtnBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 92px;
+  height: 42px;
+
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+.signinButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 25px;
+  gap: 10px;
+
+  width: 92px;
+  height: 42px;
+
+  background: #cecece;
+  border-radius: 8px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+.signinBtnText {
+  width: 42px;
+  height: 22px;
+
+  font-family: "Nunito";
+  font-size: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+
+  color: #000000;
+}
+.signupText {
+  width: 172px;
+  height: 16px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+
+  color: #000000;
+
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+.signupText2 {
+  width: 172px;
+  height: 16px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+
+  color: #29a19c;
+
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+.guidePharse {
+  width: 172px;
+  height: 16px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+
+  color: #000000;
+
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+.guidePharseSignup {
+  color: rgb(41, 161, 156);
+  text-decoration: underline;
+}
+.divide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 15px;
+
+  width: 310px;
+  height: 22px;
+
+  opacity: 0.4;
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.divideLine1 {
+  width: 123.5px;
+  height: 0px;
+
+  background: #282846;
+  opacity: 0.5;
+  border: 1px solid #282846;
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+.divideLine2 {
+  width: 123.5px;
+  height: 0px;
+
+  background: #282846;
+  opacity: 0.5;
+  border: 1px solid #282846;
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+.divideSNS {
+  width: 33px;
+  height: 22px;
+
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
+
+  color: #282846;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.snsBox {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 20px;
+
+  width: 84px;
+  height: 32px;
+
+  flex: none;
+  order: 5;
+  flex-grow: 0;
+}
