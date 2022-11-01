@@ -20,3 +20,10 @@ export interface pageListStartNum {
   start: number;
   pageSize: number;
 }
+
+export interface boardModifyData {
+  title: string;
+  content: string;
+  nickname: string;
+  boardId: number;
+}

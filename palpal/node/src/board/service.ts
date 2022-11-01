@@ -1,8 +1,20 @@
 const boardRepository = require("./repository");
-import { boardRegister, pageListNum } from "./interface";
+import { boardModifyData, boardRegister, pageListNum } from "./interface";
 const userRepository = require("../user/repository");
 
 class service {
+  async delete(id: { boardId: number }) {
+    return await boardRepository.boardDelete(id.boardId);
+  }
+
+  async modify(board: boardModifyData) {
+    return await boardRepository.boardModify(board);
+  }
+
+  async read(id: { boardId: number }) {
+    return await boardRepository.read(id.boardId);
+  }
+
   async pageList(page: pageListNum) {
     let start = 0;
     if (page.pageSize === undefined) page.pageSize = 15;
