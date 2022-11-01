@@ -1,4 +1,3 @@
-// const userExpress = require("express");
 import express, { Request, Response } from "express";
 const router = express.Router();
 const userService = require("./service");
@@ -16,7 +15,7 @@ router.post("/auth", async (req: Request, res: Response) => {
 });
 
 router.post("/signin", async (req: Request, res: Response) => {
-  const { email, token } = await userService.signin(req?.body);
+  const { email, nickname, token } = await userService.signin(req?.body);
 
   res.set({
     "content-type": "application/json; charset=utf-8",
@@ -27,13 +26,12 @@ router.post("/signin", async (req: Request, res: Response) => {
       result: "토큰 발급 완료",
       code: 200,
       email: email,
+      nickname: nickname,
       token: token,
     });
   } else {
     res.json({
       message: "로그인 실패",
-      email: email,
-      token: token,
     });
   }
 });

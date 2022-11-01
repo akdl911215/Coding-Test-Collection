@@ -25,21 +25,28 @@ module.exports = {
       ),
     };
   },
-  verify: async (req: any, res: any) => {
-    console.log("verify req : ", req);
+  verify: async (
+    req: string,
+    res: {
+      code: number;
+      message: string;
+      result: string;
+    }
+  ) => {
     try {
-      const token = req?.token;
+      const token = req;
       if (!token) {
         return {
           code: 401,
           message: "No token, authorization denied",
-          roles: null,
+          result: res,
         };
       }
       res = jwt.verify(token, iconv.decode(Buffer.from(JWTSECRET), "EUC-KR"));
       return {
         message: "토큰이 정상입니다.",
         code: 200,
+        result: res,
       };
     } catch (err: any) {
       if (err.name === "TokenExpiredError") {
@@ -47,12 +54,14 @@ module.exports = {
         return {
           code: 419,
           message: "토큰이 만료되었습니다",
+          result: res,
         };
       }
 
       return {
         code: 401,
         message: "유효하지 않은 토큰입니다.",
+        result: res,
       };
     }
   },

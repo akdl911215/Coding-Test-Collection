@@ -4,6 +4,33 @@ const date = require("../common/date");
 const currentDate = date.today();
 import { userModel, userSignin } from "./interface";
 
+exports.userInquiry = async (req: string) => {
+  const email = req;
+  const sql = `SELECT * FROM member WHERE email = '${email}'`;
+
+  return new Promise((resolve) => {
+    try {
+      db.getConnectionPool((connection: any) => {
+        connection.query(sql, (err: NodeJS.ErrnoException, rows: any) => {
+          if (err) {
+            console.error("user inquiry error : ", err);
+            resolve({
+              message: "유저 조회 실패",
+            });
+          }
+
+          if (rows) {
+            resolve(rows[0]);
+          }
+        });
+        connection.release();
+      });
+    } catch (err) {
+      console.error("user inquiry promise error : ", err);
+    }
+  });
+};
+
 exports.signin = (req: userSignin) => {
   const { email, password } = req;
   const sql = `SELECT * FROM member WHERE email = '${email}'`;
@@ -28,6 +55,7 @@ exports.signin = (req: userSignin) => {
                     message: "로그인 성공",
                     code: 200,
                     email,
+                    nickname: doc[0].nickname,
                   });
                 }
               }
