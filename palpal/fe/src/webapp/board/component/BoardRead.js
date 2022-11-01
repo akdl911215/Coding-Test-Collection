@@ -25,7 +25,6 @@ const BoardRead = () => {
       })
       .catch((err) => console.error("investing read board id error : ", err));
   }, []);
-  useEffect(() => console.log("boardState : ", boardState), [boardState]);
 
   const boardRemove = () => {
     const remove = window.confirm("글을 삭제하시겠습니까?");
@@ -101,7 +100,6 @@ const BoardRead = () => {
                 뒤로가기
               </span>
             </button>
-            {/* <GoHomeButton /> */}
             {deleteBtnBool === true ? (
               <Button onClick={boardRemove}>글 삭제</Button>
             ) : null}

@@ -62,7 +62,6 @@
 }
 .contentBox {
   width: 100%;
-  /* min-height: 600px; */
   height: 100%;
 }
 .contentInput {
@@ -105,7 +104,6 @@
 
 .btnBox {
   margin-left: auto;
-  /* flex-grow: 1; */
 }
 .cancelBtn {
   width: 95px;

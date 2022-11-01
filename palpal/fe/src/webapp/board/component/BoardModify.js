@@ -25,7 +25,6 @@ const BoardModify = () => {
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    console.log(`name: ${name}, value: ${value}`);
 
     setModify({
       ...modify,
@@ -42,7 +41,6 @@ const BoardModify = () => {
             ...modify,
           })
             .then((res) => {
-              console.log("modify res : ", res);
               if (res?.data?.code === 200) {
                 alert("수정 성공");
               }
@@ -110,7 +108,6 @@ const BoardModify = () => {
                 뒤로가기
               </span>
             </button>
-            {/* <GoHomeButton /> */}
           </div>
         </div>
       </div>

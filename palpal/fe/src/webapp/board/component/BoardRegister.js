@@ -74,7 +74,6 @@ const BoardRegister = () => {
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    console.log(`name: ${name}, value: ${value}`);
 
     setRegister({
       ...register,
@@ -121,7 +120,6 @@ const BoardRegister = () => {
                 취소
               </span>
             </button>
-            {/* <GoHomeButton /> */}
           </div>
         </div>
       </div>

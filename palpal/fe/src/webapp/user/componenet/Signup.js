@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Button, Form, Input, Container } from "semantic-ui-react";
+import React, { useCallback, useState } from "react";
+import { Button, Form } from "semantic-ui-react";
 import styles from "../style/Signup.module.css";
 import { UserSignupDataAPI } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { UserSigninDataAPI, UserAuthDataAPI } from "../../api/userApi";
+import { UserSigninDataAPI } from "../../api/userApi";
 import styles from "../style/Signin.module.css";
 
 const Signin = () => {
@@ -22,7 +22,6 @@ const Signin = () => {
     if (result) {
       UserSigninDataAPI(signin)
         .then((res) => {
-          console.log("res : ", res);
           if (res?.data?.code === 200) {
             alert("로그인 성공하였습니다.");
             sessionStorage.setItem("jwtToken", res?.data?.token);

@@ -18,7 +18,6 @@ const BoardList = () => {
           sessionStorage.setItem("currentPage", 1);
           BoardPagenationListDataAPI(1)
             .then((res) => {
-              console.log("res : ", res);
               setListArr(res?.data?.list);
               setTotalPages(res?.data?.pagenationCount);
             })
@@ -93,7 +92,6 @@ const BoardList = () => {
                 <tbody className={styles.tableBody}>
                   {listArr?.map((el) => (
                     <tr key={el.id}>
-                      {/* onClick={() => movePage(el.id)} */}
                       <td onClick={() => movePage(el.id)}>{el.id}</td>
                       <td onClick={() => movePage(el.id)}>{el.title}</td>
                       <td onClick={() => movePage(el.id)}>{el.nickname}</td>
@@ -105,7 +103,6 @@ const BoardList = () => {
           </div>
 
           <div className={styles.btnStyle}>
-            {/* <GoHomeButton /> */}
             <div className={styles.writeBtn}>
               {sessionStorage.getItem("email") === null ? null : (
                 <button className={styles.contentRegisterBtn}>
