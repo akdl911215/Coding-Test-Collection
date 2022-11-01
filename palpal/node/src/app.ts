@@ -5,6 +5,7 @@ const hostname = "localhost";
 const PORT = 8080;
 const cors = require("cors");
 const userRouter = require("./user/controller");
+const boardRouter = require("./board/controller");
 require("dotenv").config();
 
 app.use(cors());
@@ -14,8 +15,4 @@ app.listen(PORT, hostname, () => {
 });
 
 app.use("/users", userRouter);
-
-// app.get("/pet", function (req, res) {
-//   console.log("req : ", req);
-//   res.send("용품쇼핑사이틉니다");
-// });
+app.use("/board", boardRouter);
