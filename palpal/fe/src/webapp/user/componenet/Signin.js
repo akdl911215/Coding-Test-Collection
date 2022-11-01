@@ -27,6 +27,7 @@ const Signin = () => {
             alert("로그인 성공하였습니다.");
             sessionStorage.setItem("jwtToken", res?.data?.token);
             sessionStorage.setItem("email", res?.data?.email);
+            sessionStorage.setItem("nickname", res?.data?.nickname);
             navigate("/");
           } else {
             alert("로그인 실패하였습니다.");
