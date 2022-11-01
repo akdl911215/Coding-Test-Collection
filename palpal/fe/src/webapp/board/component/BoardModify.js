@@ -22,7 +22,6 @@ const BoardModify = () => {
       })
       .catch((err) => console.error("investing read board id error : ", err));
   }, []);
-  useEffect(() => console.log("modfiy : ", modify), [modify]);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -57,7 +56,6 @@ const BoardModify = () => {
           );
 
           if (signin) {
-            // sessionRemove();
             navigate("/users_signin");
           }
         }

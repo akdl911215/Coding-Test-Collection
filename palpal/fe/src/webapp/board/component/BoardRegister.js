@@ -23,7 +23,6 @@ const BoardRegister = () => {
     email: emailCheck,
   });
 
-  useEffect(() => console.log("register : ", register), [register]);
   useEffect(() => {
     UserAuthDataAPI()
       .then((res) => {
