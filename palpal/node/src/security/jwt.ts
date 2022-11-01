@@ -25,37 +25,35 @@ module.exports = {
       ),
     };
   },
-  // verify: async (req, res, next) => {
-  //   try {
-  //     const token = req?.token;
-  //     if (!token) {
-  //       return {
-  //         code: 401,
-  //         message: "No token, authorization denied",
-  //         roles: null,
-  //       };
-  //     }
-  //     res = jwt.verify(token, iconv.decode(Buffer.from(JWTSECRET), "EUC-KR"));
-  //     return {
-  //       message: "토큰이 정상입니다.",
-  //       code: 200,
-  //       roles: req?.roles,
-  //     };
-  //   } catch (err) {
-  //     if (err.name === "TokenExpiredError") {
-  //       // 유효기간 초과
-  //       return {
-  //         code: 419,
-  //         message: "토큰이 만료되었습니다",
-  //         roles: null,
-  //       };
-  //     }
+  verify: async (req: any, res: any) => {
+    console.log("verify req : ", req);
+    try {
+      const token = req?.token;
+      if (!token) {
+        return {
+          code: 401,
+          message: "No token, authorization denied",
+          roles: null,
+        };
+      }
+      res = jwt.verify(token, iconv.decode(Buffer.from(JWTSECRET), "EUC-KR"));
+      return {
+        message: "토큰이 정상입니다.",
+        code: 200,
+      };
+    } catch (err: any) {
+      if (err.name === "TokenExpiredError") {
+        // 유효기간 초과
+        return {
+          code: 419,
+          message: "토큰이 만료되었습니다",
+        };
+      }
 
-  //     return {
-  //       code: 401,
-  //       message: "유효하지 않은 토큰입니다.",
-  //       roles: null,
-  //     };
-  //   }
-  // },
+      return {
+        code: 401,
+        message: "유효하지 않은 토큰입니다.",
+      };
+    }
+  },
 };

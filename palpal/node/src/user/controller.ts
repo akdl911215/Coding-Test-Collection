@@ -3,10 +3,20 @@ import express, { Request, Response } from "express";
 const router = express.Router();
 const userService = require("./service");
 
+router.post("/auth", async (req: Request, res: Response) => {
+  let HEADER = "";
+  if (req?.header("Authorization")) {
+    HEADER = req?.header("Authorization") || "";
+  }
+
+  const { code, message } = await userService.jwtToken({
+    token: HEADER.split(" ")[1],
+  });
+  return res.json({ code, message });
+});
+
 router.post("/signin", async (req: Request, res: Response) => {
-  console.log("signin req?.body  :", req?.body);
   const { email, token } = await userService.signin(req?.body);
-  console.log(`email: ${email}, token: ${token}`);
 
   res.set({
     "content-type": "application/json; charset=utf-8",
