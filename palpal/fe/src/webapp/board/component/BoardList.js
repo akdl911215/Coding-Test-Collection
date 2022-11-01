@@ -15,6 +15,7 @@ const BoardList = () => {
     UserAuthDataAPI()
       .then((res) => {
         if (res?.data?.code === 200) {
+          sessionStorage.setItem("currentPage", 1);
           BoardPagenationListDataAPI(1)
             .then((res) => {
               console.log("res : ", res);
@@ -42,16 +43,30 @@ const BoardList = () => {
 
   const handleChange = (e) => {
     const boolNum = e.target.text;
+
     let num = 0;
     if (boolNum < "1") {
       num = 1;
     } else if (boolNum === "⟩") {
-      num = Number(sessionStorage.getItem("pageList")) + 1;
+      num = Number(sessionStorage.getItem("currentPage")) + 1;
     } else if (boolNum === "⟨") {
-      num = Number(sessionStorage.getItem("pageList")) - 1;
+      num = Number(sessionStorage.getItem("currentPage")) - 1;
     } else {
       num = Number(e.target.text);
     }
+
+    sessionStorage.setItem("currentPage", num);
+    BoardPagenationListDataAPI(num)
+      .then((res) => {
+        setListArr(res?.data?.list);
+        setTotalPages(res?.data?.pagenationCount);
+      })
+      .catch((err) => console.error("board pagenation list error : ", err));
+  };
+
+  const movePage = (id) => {
+    sessionStorage.setItem("boardId", id);
+    navigate("/board_read");
   };
 
   return (
@@ -76,29 +91,17 @@ const BoardList = () => {
                   </tr>
                 </thead>
                 <tbody className={styles.tableBody}>
-                  {/* {totalList?.map((el) => ( */}
                   {listArr?.map((el) => (
                     <tr key={el.id}>
                       {/* onClick={() => movePage(el.id)} */}
-                      <td>{el.id}</td>
-                      <td>{el.title}</td>
-                      {/* <td onClick={() => movePage(el.id)}>{el.writer}</td> */}
-                      <td>{el.nickname}</td>
+                      <td onClick={() => movePage(el.id)}>{el.id}</td>
+                      <td onClick={() => movePage(el.id)}>{el.title}</td>
+                      <td onClick={() => movePage(el.id)}>{el.nickname}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <Pagination
-              boundaryRange={0}
-              defaultActivePage={1}
-              ellipsisItem={null}
-              firstItem={null}
-              lastItem={null}
-              siblingRange={1}
-              totalPages={totalPages}
-              onClick={(e) => handleChange(e)}
-            />
           </div>
 
           <div className={styles.btnStyle}>
@@ -116,12 +119,18 @@ const BoardList = () => {
               )}
             </div>
           </div>
-          {/* <div className={styles.paginationStyle}>
-            <ShowPageNation
-              name="investingBoardPageList"
-              totalPages={pageList}
+          <div className={styles.paginationStyle}>
+            <Pagination
+              boundaryRange={0}
+              defaultActivePage={1}
+              ellipsisItem={null}
+              firstItem={null}
+              lastItem={null}
+              siblingRange={1}
+              totalPages={totalPages}
+              onClick={(e) => handleChange(e)}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </>
