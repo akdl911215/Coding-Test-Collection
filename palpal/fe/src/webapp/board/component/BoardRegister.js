@@ -11,10 +11,16 @@ const BoardRegister = () => {
     sessionStorage.getItem("nickname") === null
       ? ""
       : sessionStorage.getItem("nickname");
+  const emailCheck =
+    sessionStorage.getItem("email") === null
+      ? ""
+      : sessionStorage.getItem("email");
+
   const [register, setRegister] = useState({
     title: "",
     writer: witerCheck,
     content: "",
+    email: emailCheck,
   });
 
   useEffect(() => console.log("register : ", register), [register]);
@@ -38,12 +44,33 @@ const BoardRegister = () => {
   }, []);
 
   const registerUpload = () => {
-    BoardRegisterDataAPI(register)
+    UserAuthDataAPI()
       .then((res) => {
-        //
-        console.log("res : ", res);
+        if (res?.data?.code === 200) {
+          BoardRegisterDataAPI(register)
+            .then((res) => {
+              if (res?.data?.code === 200) {
+                alert("게시판 등록이 완료되었습니다.");
+                navigate("/board_list");
+              } else {
+                alert("게시판 등록을 실패하였습니다.");
+              }
+            })
+            .catch((err) =>
+              console.error("board register data api error : ", err)
+            );
+        } else {
+          const result = window.confirm("로그인을 진행하시겠습니까?");
+
+          if (result) {
+            navigate("/users_signin");
+            sessionStorage.setItem("signinPage", "/board_register");
+          }
+        }
       })
-      .catch((err) => console.error("board register data api error : ", err));
+      .catch((err) =>
+        console.error("board register token check error : ", err)
+      );
   };
 
   const handleChange = useCallback((e) => {
