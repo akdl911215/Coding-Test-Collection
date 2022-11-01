@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Button, Form, Input, Container } from "semantic-ui-react";
-// import GoHomeButton from "../../common/component/GoHomeButton";
 import styles from "../style/Signup.module.css";
 import { UserSignupDataAPI } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,6 @@ const Signup = () => {
   const handleChange = useCallback(
     (e) => {
       const { name, value } = e.target;
-      console.log(`mame : ${name}, value : ${value}`);
 
       setSignup({
         ...signup,
@@ -27,7 +25,6 @@ const Signup = () => {
     },
     [signup]
   );
-  useEffect(() => console.log("signup : ", signup), [signup]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,12 +33,16 @@ const Signup = () => {
     const result = window.confirm("회원가입을 진행하시겠습니까?");
 
     if (result) {
-      alert("회원가입 완료");
-      // signup.roles = "USER";
-      console.log("signup : ", signup);
-
-      UserSignupDataAPI(signup);
-      // navigate("/users_signin");
+      UserSignupDataAPI(signup)
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            alert(`${res?.data?.user?.email}로 회원가입 완료`);
+            navigate("/users_signin");
+          } else {
+            alert("회원가입 실패");
+          }
+        })
+        .catch((err) => console.error("user signup data api error : ", err));
     }
   };
 
