@@ -20,7 +20,6 @@ router.post("/list", async (req: Request, res: Response) =>
 
 router.post("/register", async (req: Request, res: Response) => {
   const { message, code } = await boardService.register(req?.body);
-  console.log(`register message : ${message}, code : ${code}`);
 
   res.json({
     code,

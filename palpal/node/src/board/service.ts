@@ -39,9 +39,7 @@ class service {
   }
 
   async register(board: boardRegister) {
-    console.log("service board : ", board);
     const user = await userRepository.userInquiry(board.email);
-    console.log("service user : ", user);
     return await boardRepository.register({
       title: board.title,
       content: board.content,

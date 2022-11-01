@@ -24,7 +24,6 @@ exports.boardDelete = (req: number) => {
           }
 
           if (doc) {
-            console.log("board delete success : ", doc);
             resolve({
               code: 200,
               message: "게시판 삭제 성공",
@@ -51,7 +50,6 @@ exports.boardModify = (req: boardModifyData) => {
             resolve({
               message: "게시판 정보 수정 완료되었습니다.",
               code: 200,
-              success: rows,
             });
           }
 

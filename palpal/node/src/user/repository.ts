@@ -88,7 +88,6 @@ exports.register = (req: userModel) => {
           }
 
           if (doc) {
-            console.log("user register query success : ", doc);
             resolve({
               message: "회원가입 성공하였습니다.",
               code: 200,
