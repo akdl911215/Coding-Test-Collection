@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../style/BoardList.module.css";
 import { useNavigate } from "react-router";
+import { UserAuthDataAPI } from "../../api/userApi";
 
 const BoardList = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    UserAuthDataAPI()
+      .then((res) => {
+        if (res?.data?.code !== 200) {
+          const result = window.confirm(
+            "로그인이 필요한 기능입니다. 로그인을 진행하시겠습니까?"
+          );
+
+          if (result) {
+            navigate("/users_signin");
+            sessionStorage.setItem("signinPage", "/board_list");
+          } else {
+            navigate("/");
+          }
+        }
+      })
+      .catch((err) => console.error(`board list token check error : ${err}`));
+  }, []);
   const arr = [
     {
       id: "1",
@@ -55,7 +75,7 @@ const BoardList = () => {
                 <button className={styles.contentRegisterBtn}>
                   <span
                     className={styles.contentRegisterText}
-                    onClick={() => navigate("/investing_infomation_register")}
+                    onClick={() => navigate("/board_register")}
                   >
                     글쓰기
                   </span>

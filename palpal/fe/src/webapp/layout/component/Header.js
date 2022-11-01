@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { sessionRemove } from "../../common/component/sessionRemove";
 import "../style/Header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <>
@@ -20,7 +23,7 @@ const Header = () => {
                   to="/"
                   onClick={(e) => {
                     alert("로그아웃을 진행합니다");
-
+                    sessionRemove();
                     window.location.reload();
                   }}
                 >

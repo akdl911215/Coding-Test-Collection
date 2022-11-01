@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BoardRegisterDataAPI } from "../../api/boardApi";
 import { UserAuthDataAPI } from "../../api/userApi";
 import styles from "../style/BoardRegister.module.css";
 
@@ -20,23 +21,29 @@ const BoardRegister = () => {
   useEffect(() => {
     UserAuthDataAPI()
       .then((res) => {
-        if (res?.data?.code === 200) {
-          console.log("로그인 상태 확인 완료");
-        } else {
-          if (window.confirm("로그인을 진행하시겠습니까?")) {
+        if (res?.data?.code !== 200) {
+          const result = window.confirm("로그인을 진행하시겠습니까?");
+
+          if (result) {
             navigate("/users_signin");
-            sessionStorage.setItem(
-              "signinPage",
-              "/investing_infomation_register"
-            );
+            sessionStorage.setItem("signinPage", "/board_register");
+          } else {
+            navigate("/board_list");
           }
         }
       })
-      .catch((err) => console.error(`token, roles check error : ${err}`));
+      .catch((err) =>
+        console.error("board register token check error : ", err)
+      );
   }, []);
 
   const registerUpload = () => {
-    //
+    BoardRegisterDataAPI(register)
+      .then((res) => {
+        //
+        console.log("res : ", res);
+      })
+      .catch((err) => console.error("board register data api error : ", err));
   };
 
   const handleChange = useCallback((e) => {

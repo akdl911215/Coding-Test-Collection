@@ -28,7 +28,13 @@ const Signin = () => {
             sessionStorage.setItem("jwtToken", res?.data?.token);
             sessionStorage.setItem("email", res?.data?.email);
             sessionStorage.setItem("nickname", res?.data?.nickname);
-            navigate("/");
+
+            if (sessionStorage.getItem("signinPage") === null) {
+              navigate("/");
+            } else {
+              navigate(sessionStorage.getItem("signinPage"));
+              sessionStorage.removeItem("signinPage");
+            }
           } else {
             alert("로그인 실패하였습니다.");
           }
